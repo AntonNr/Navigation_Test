@@ -21,6 +21,8 @@ final class Screen5Model: ObservableObject {
         } else if router.countOfScreens == 3 {
             self.router.backToMain(range: 3)
             self.router.countOfScreens = 0
+        } else if router.countOfScreens == 0 {
+            self.router.showMain()
         }
     }
 }

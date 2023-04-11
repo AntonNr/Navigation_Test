@@ -8,28 +8,38 @@
 import SwiftUI
 
 struct MainView: View {
-    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: MainModel
-    
-    var countOfScreen: Int = 0
+    @State private var offset = CGSize.zero
+    @State private var screens: [AnyView] = [
+        AnyView(OtherAssembly().build()),
+        AnyView(Screen2Assembly().build()),
+        AnyView(Screen2SecondAssembly().build()),
+        AnyView(Screen3Assembly().build()),
+        AnyView(Screen4Assembly().build()),
+        AnyView(Screen5Assembly().build())
+    ]
     
     var body: some View {
-        VStack{
-            List {
-                Button("Other Screen", action: {viewModel.showOtherScreen()})
-                Button("Screen 2", action: {viewModel.showScreen2()})
-                Button("Screen 2 Second", action: {viewModel.showScreen2Second()})
-                Button("Screen 3", action: {viewModel.showScreen3()})
-                Button("Screen 4", action: {viewModel.showScreen4()})
-                Button("Screen 5", action: {viewModel.showScreen5()})
-            }
-            .toolbar(.hidden, for: .navigationBar)
+        VStack {
+                ForEach(0..<screens.count, id: \.self) { index in
+                    NavigationLink(destination: screens[index]) {
+                        Text("Screen \(index)")
+                    }
+                }
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainAssembly().build()
+    }
+}
+
+extension View {
+    func stacked(at position: Int, in total: Int) -> some View {
+        let offset = Double(total - position)
+        return self.offset (x: 0, y: offset * 10)
     }
 }
