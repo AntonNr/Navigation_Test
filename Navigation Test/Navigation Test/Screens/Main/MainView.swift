@@ -9,8 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @ObservedObject var viewModel: MainModel
-    @State private var offset = CGSize.zero
-    @State private var screens: [AnyView] = [
+    @State private var screens: Array<AnyView> = [
         AnyView(OtherAssembly().build()),
         AnyView(Screen2Assembly().build()),
         AnyView(Screen2SecondAssembly().build()),
@@ -22,12 +21,26 @@ struct MainView: View {
     var body: some View {
         VStack {
                 ForEach(0..<screens.count, id: \.self) { index in
-                    NavigationLink(destination: screens[index]) {
+                    NavigationLink(destination: screens[index], label: {
                         Text("Screen \(index)")
-                    }
+                            .font(.largeTitle)
+                    })
                 }
         }
         .toolbar(.hidden, for: .navigationBar)
+        .gesture(
+            DragGesture()
+                .onEnded { value in
+                    if value.translation.height < 0 {
+                        let screenSaver = screens.removeFirst()
+                        screens.append(screenSaver)
+                    }
+                    if value.translation.height > 0 {
+                        let screenSaver = screens.removeLast()
+                        screens.insert(screenSaver, at: 0)
+                    }
+                }
+        )
     }
 }
 
@@ -40,6 +53,6 @@ struct MainView_Previews: PreviewProvider {
 extension View {
     func stacked(at position: Int, in total: Int) -> some View {
         let offset = Double(total - position)
-        return self.offset (x: 0, y: offset * 10)
+        return self.offset (x: 0, y: offset * 50)
     }
 }

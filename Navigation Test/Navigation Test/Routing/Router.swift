@@ -20,6 +20,7 @@ final class Router: ObservableObject {
     
     func showMain() {
         path.append(.main)
+        countOfScreens += 1
     }
     
     func showOtherScreen() {

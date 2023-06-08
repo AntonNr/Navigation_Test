@@ -15,13 +15,10 @@ final class Screen5Model: ObservableObject {
     }
     
     func showRootScreen() {
-        if router.countOfScreens == 4 {
-            self.router.backToMain(range: 4)
-            self.router.countOfScreens = 0
-        } else if router.countOfScreens == 3 {
-            self.router.backToMain(range: 3)
-            self.router.countOfScreens = 0
-        } else if router.countOfScreens == 0 {
+        if router.countOfScreens > 1 {
+            self.router.backToMain(range: router.countOfScreens - 1)
+            self.router.countOfScreens = 1
+        } else {
             self.router.showMain()
         }
     }
