@@ -13,4 +13,9 @@ final class OtherAssembly {
         let viewModel = OtherModel(router: router)
         return OtherView(viewModel: viewModel)
     }
+    
+    func showScreen() {
+        let router = Router.shared
+        router.addScreenToStack(screen: .otherScreen)
+    }
 }

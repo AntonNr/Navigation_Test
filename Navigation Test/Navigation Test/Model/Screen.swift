@@ -6,9 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct Screen: Identifiable {
-    let id = UUID()
-    let title: String
-    let destination: () -> Void
+struct Screen {
+    let screen: AnyView
+    let nameOfScreen: String
 }

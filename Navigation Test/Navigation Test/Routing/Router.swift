@@ -14,41 +14,34 @@ final class Router: ObservableObject {
     
     var countOfScreens = 0
     
-    func showOnboarding() {
-        path.append(.onboarding)
-    }
-    
-    func showMain() {
-        path.append(.main)
-        countOfScreens += 1
-    }
-    
-    func showOtherScreen() {
-        path.append(.otherScreen)
-    }
-    
-    func showScreen2() {
-        path.append(.screen2)
-    }
-    
-    func showScreen2Second() {
-        path.append(.screen2second)
-        countOfScreens += 1
-    }
-    
-    func showScreen3() {
-        path.append(.screen3)
-        countOfScreens += 1
-    }
-    
-    func showScreen4() {
-        path.append(.screen4)
-        countOfScreens += 1
-    }
-    
-    func showScreen5() {
-        path.append(.screen5)
-        countOfScreens += 1
+    func addScreenToStack(screen: Route) {
+        switch screen {
+        case .start:
+            path.append(.start)
+            countOfScreens += 1
+        case .onboarding:
+            path.append(.onboarding)
+            countOfScreens += 1
+        case .main:
+            path.append(.main)
+            countOfScreens += 1
+        case .otherScreen:
+            path.append(.otherScreen)
+        case .screen2:
+            path.append(.screen2)
+        case .screen2second:
+            path.append(.screen2second)
+            countOfScreens += 1
+        case .screen3:
+            path.append(.screen3)
+            countOfScreens += 1
+        case .screen4:
+            path.append(.screen4)
+            countOfScreens += 1
+        case .screen5:
+            path.append(.screen5)
+            countOfScreens += 1
+        }
     }
     
     func backToMain(range: Int) {
@@ -57,9 +50,5 @@ final class Router: ObservableObject {
     
     func backToRoot() {
         path.removeAll()
-    }
-    
-    func back() {
-        path.removeLast()
     }
 }

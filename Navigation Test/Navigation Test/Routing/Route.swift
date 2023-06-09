@@ -8,6 +8,7 @@
 import Foundation
 
 enum Route: Hashable {
+    case start
     case onboarding
     case main
     case otherScreen

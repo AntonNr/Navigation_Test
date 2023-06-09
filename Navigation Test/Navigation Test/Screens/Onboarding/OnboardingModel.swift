@@ -15,6 +15,6 @@ final class OnboardingModel: ObservableObject {
     }
     
     func showMain() {
-        self.router.showMain()
+        self.router.addScreenToStack(screen: .main)
     }
 }

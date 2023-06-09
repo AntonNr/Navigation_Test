@@ -15,6 +15,6 @@ final class Screen3Model: ObservableObject {
     }
     
     func showNextScreen() {
-        self.router.showScreen4()
+        self.router.addScreenToStack(screen: .screen4)
     }
 }

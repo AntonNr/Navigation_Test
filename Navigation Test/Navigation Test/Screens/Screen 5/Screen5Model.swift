@@ -19,7 +19,7 @@ final class Screen5Model: ObservableObject {
             self.router.backToMain(range: router.countOfScreens - 1)
             self.router.countOfScreens = 1
         } else {
-            self.router.showMain()
+            self.router.addScreenToStack(screen: .main)
         }
     }
 }

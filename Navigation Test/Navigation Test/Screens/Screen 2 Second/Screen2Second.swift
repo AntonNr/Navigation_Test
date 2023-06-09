@@ -11,15 +11,17 @@ struct Screen2Second: View {
     @ObservedObject var viewModel: Screen2SecondModel
     
     var body: some View {
-        Text("Hello, Screen2Second!")
+        VStack{
+            Text("Hello, Screen2Second!")
+                .font(.title)
+            
+            Button("Next Screen") {
+                viewModel.showNextScreen()
+            }
             .font(.title)
-        
-        Button("Next Screen") {
-            viewModel.showNextScreen()
+            .padding()
+            .toolbar(.hidden, for: .navigationBar)
         }
-        .font(.title)
-        .padding()
-        .toolbar(.hidden, for: .navigationBar)
     }
 }
 

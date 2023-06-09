@@ -14,15 +14,19 @@ final class StartModel: ObservableObject {
         self.router = router
     }
     
+    func showStart() {
+        self.router.addScreenToStack(screen: .start)
+    }
+    
     func showOnboarding() {
-        self.router.showOnboarding()
+        self.router.addScreenToStack(screen: .onboarding)
     }
     
     func showMain() {
-        self.router.showMain()
+        self.router.addScreenToStack(screen: .main)
     }
     
     func showTest() {
-        self.router.showScreen2Second()
+        self.router.addScreenToStack(screen: .screen2second)
     }
 }

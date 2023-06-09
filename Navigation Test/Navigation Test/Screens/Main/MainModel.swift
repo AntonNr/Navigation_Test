@@ -16,26 +16,26 @@ final class MainModel: ObservableObject {
     }
     
     func showOtherScreen() {
-        self.router.showOtherScreen()
+        self.router.addScreenToStack(screen: .otherScreen)
     }
     
     func showScreen2() {
-        self.router.showScreen2()
+        self.router.addScreenToStack(screen: .screen2)
     }
     
     func showScreen2Second() {
-        self.router.showScreen2Second()
+        self.router.addScreenToStack(screen: .screen2second)
     }
     
     func showScreen3() {
-        self.router.showScreen3()
+        self.router.addScreenToStack(screen: .screen3)
     }
     
     func showScreen4() {
-        self.router.showScreen4()
+        self.router.addScreenToStack(screen: .screen4)
     }
     
     func showScreen5() {
-        self.router.showScreen5()
+        self.router.addScreenToStack(screen: .screen5)
     }
 }

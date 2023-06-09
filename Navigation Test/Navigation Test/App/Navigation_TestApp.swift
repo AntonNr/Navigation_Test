@@ -17,6 +17,8 @@ struct Navigation_TestApp: App {
                 StartAssembly().build()
                     .navigationDestination(for: Route.self) { route in
                         switch route {
+                        case .start:
+                            StartAssembly().build()
                         case .onboarding:
                             OnboardingAssembly().build()
                         case .main:

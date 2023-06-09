@@ -9,23 +9,23 @@ import SwiftUI
 
 struct MainView: View {
     @ObservedObject var viewModel: MainModel
-    @State private var screens: Array<AnyView> = [
-        AnyView(OtherAssembly().build()),
-        AnyView(Screen2Assembly().build()),
-        AnyView(Screen2SecondAssembly().build()),
-        AnyView(Screen3Assembly().build()),
-        AnyView(Screen4Assembly().build()),
-        AnyView(Screen5Assembly().build())
+    @State private var screens: Array<Screen> = [
+        Screen(screen: AnyView(OtherAssembly().build()), nameOfScreen: "Other Screen"),
+        Screen(screen: AnyView(Screen2Assembly().build()), nameOfScreen: "Screen 2"),
+        Screen(screen: AnyView(Screen2SecondAssembly().build()), nameOfScreen: "Screen 2 Second"),
+        Screen(screen: AnyView(Screen3Assembly().build()), nameOfScreen: "Screen 3"),
+        Screen(screen: AnyView(Screen4Assembly().build()), nameOfScreen: "Screen 4"),
+        Screen(screen: AnyView(Screen5Assembly().build()), nameOfScreen: "Screen 5")
     ]
     
     var body: some View {
         VStack {
-                ForEach(0..<screens.count, id: \.self) { index in
-                    NavigationLink(destination: screens[index], label: {
-                        Text("Screen \(index)")
-                            .font(.largeTitle)
-                    })
-                }
+            ForEach(0..<screens.count, id: \.self) { index in
+                NavigationLink(destination: screens[index].screen, label: {
+                    Text("\(screens[index].nameOfScreen)")
+                        .font(.largeTitle)
+                })
+            }
         }
         .toolbar(.hidden, for: .navigationBar)
         .gesture(

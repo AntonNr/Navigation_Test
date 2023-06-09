@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ScreenRow: View {
     let screen: AnyView
+    let nameOfScreen: String
     
     var body: some View {
         Text("")
